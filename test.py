@@ -14,3 +14,4 @@ print("是否为字符串", isString)
 
 ### 中文编码
 print("你好，世界")
+print("python")
