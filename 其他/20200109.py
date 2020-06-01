@@ -2,6 +2,7 @@ temp=input("我最喜欢的数字:")
 guess = int(temp)
 num =1
 while guess !=7:
+    print(123)
     if num<5:
         guess = int(temp)
         if guess==7:
