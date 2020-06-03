@@ -22,3 +22,18 @@ while count <= num:
     sum += count
     count += 1
     print(sum)
+
+for x in range(5):
+    print("第{}次".format(x))
+    if x == 2:
+        print("xixi")
+        pass
+        print("hehe")
+    else:
+        print("haha")
+
+for x in range(5):
+    print("循环开始")
+    if (x == 2):
+        break
+    print("循环结束")
