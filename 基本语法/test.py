@@ -6,9 +6,10 @@ else:
 
 a, b = 0, 1
 while b < 10:
-    print(b)
-    print(b, end=',')
+    # print(b)
+    # print(b, end=',')
     a, b = b, a+b
+    print(a, b)
 
-c, d = 1, '1'
-print(c == d)
+# c, d = 1, '1'
+# print(c == d)
