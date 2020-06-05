@@ -17,6 +17,13 @@ for x in range(len(data)):
 # 四、使用内置方法enumerate，可以同时提供索引和元素
 print([{str(index): value} for index, value in enumerate(data)])
 
+# 五、遍历多个序列
+questions = ['name', 'age']
+answers = ['zhangsan', 18]
+for q, a in zip(questions, answers):
+    print("{} = {}".format(q, a))
+
+
 # while循环，python只有前测试 while 循环(满足条件后才执行)，没有类似于JS的 do while 后测试循环语句(满足条件前至少循环一次)
 count = 0
 sum = 0
