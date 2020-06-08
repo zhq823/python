@@ -1,5 +1,5 @@
 import sys, os
-from module import matrix
+from package import matrix
 
 # print(sys.path)
 # print(dir(sys))

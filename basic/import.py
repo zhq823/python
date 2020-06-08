@@ -28,7 +28,7 @@ print("%s: 引入function模块中的函数func，并且重命名为newFunc"%new
 
 # 不同目录
 # import sys
-# sys.path.append('/module/function')
+# sys.path.append('/package/function')
 # import function as a
 # print(a.function())
 

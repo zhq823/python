@@ -1,5 +1,5 @@
 # 矩阵变换
-from module import matrix
+from package import matrix
 list = [
     [1, 2, 3, 4],
     [5, 6, 7, 8],
