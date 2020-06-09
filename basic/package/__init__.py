@@ -4,9 +4,8 @@ import sys, os, pathlib
 # 当import一个模块时，默认从当前目录查找，如果没有就去sys.path查找
 if __name__ == "__main__":
     # 同一目录直接from xx import xx
-    # 不同目录需要添加环境变量
+    # 不同目录需要添加环境变量【特别注意的是，这些设置环境变量是在你的文件写的，而不是被引用的模块】
     # 方法一 推荐这种方法
-    # 这种方法查找的rootPath是整个模块运行的根目录
     currentPath = os.path.abspath(os.path.dirname(__file__))
     rootPath = os.path.split(currentPath)[0]
     sys.path.append(rootPath)

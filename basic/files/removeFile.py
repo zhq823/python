@@ -1,13 +1,19 @@
-import sys, os, pathlib
+import sys
+import os
+import pathlib
 
-rootPath = os.path.split(pathlib.Path(__file__).parent)[0]
+
+currentPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(currentPath)[0]
 sys.path.append(rootPath)
-print(os.path, type(os.path))
-print(pathlib.Path(__file__), type(pathlib.Path(__file__)))
+
+print(currentPath)
+print(rootPath)
+
+from package.matrix import get
+
+
 print(sys.path)
-
-from package import matrix
-
 
 
 list = [
@@ -16,4 +22,7 @@ list = [
     [9, 10, 11, 12],
 ]
 
-print(matrix.get(list))
+print(get(list))
+
+# print(os.path.dirname(__file__))
+# os.remove("{}/text.txt".format(os.path.dirname(__file__)))

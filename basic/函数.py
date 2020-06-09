@@ -12,6 +12,7 @@
 a, b = 520, 250
 
 
+
 def plugin():
     print("a的值是：%d" % a)
 
