@@ -1,6 +1,4 @@
 import pymysql
-
-
 class SQLEditor:
 
     def Select(self, sql):

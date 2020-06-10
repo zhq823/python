@@ -9,7 +9,7 @@ from package.SQLEditor.index import SQLEditor
 instance = SQLEditor()
 
 # 执行删除SQL
-instance.Render("DELETE FROM ANIMAL WHERE NAME LIKE '%哈士奇%'")
+# instance.Render("DELETE FROM ANIMAL WHERE NAME LIKE '%哈士奇%'")
 # 执行查询所有数据
 dataList = instance.Select("SELECT * FROM ANIMAL as a WHERE a.NAME LIKE '%哈士奇%'")
 # 执行组合SQL操作，插入、更新
