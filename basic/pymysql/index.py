@@ -1,17 +1,21 @@
-import pymysql
+import sys, os
+import json
 
-# 打开数据库连接
-db = pymysql.connect(host="47.101.30.46", port=4006, user="smartms", passwd="1", db="smartx_temp", charset="utf8")
+rootPath = os.path.split(os.path.abspath(os.path.dirname(__file__)))[0]
+sys.path.append(rootPath)
 
-# 创建一个游标对象
-cursor = db.cursor()
+# 引入SQL自定义增删改查类
+from package.SQLEditor.index import SQLEditor
+instance = SQLEditor()
 
-# 执行SQL查询
-cursor.execute("SELECT * FROM temp_20200420_add as A WHERE A.Column1='上海市'")
-
-# 获取单条数据
-data = cursor.fetchall()
-
-# print("这是一条测试数据：{}".format(data))
-for x in data:
-    print(x)
+# 执行删除SQL
+instance.Render("DELETE FROM ANIMAL WHERE NAME LIKE '%哈士奇%'")
+# 执行查询所有数据
+dataList = instance.Select("SELECT * FROM ANIMAL as a WHERE a.NAME LIKE '%哈士奇%'")
+# 执行组合SQL操作，插入、更新
+instance.Render("INSERT INTO ANIMAL(NAME, AGE, HEIGHT) VALUES('哈士奇{0}', 888{0}, 666{0})".format(len(dataList)), "UPDATE ANIMAL SET AGE = AGE + 1 WHERE NAME='哈士奇1'")
+# 执行查询所有数据
+dataList = instance.Select("SELECT * FROM ANIMAL as a WHERE a.NAME LIKE '%哈士奇%'")
+# 将py数据类型转成JSON
+# dataList = json.dumps(dataList)
+print(dataList)

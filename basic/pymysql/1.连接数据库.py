@@ -24,5 +24,7 @@ data = cursor.fetchone()
 dataList = cursor.fetchall()
 
 # print("这是一条测试数据：{}".format(data))
-for x in data:
+for x in dataList:
     print(x)
+
+db.close()
