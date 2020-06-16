@@ -2,7 +2,7 @@ import os
 import json
 import math
 from openpyxl import Workbook, load_workbook
-from openpyxl.worksheet.pagebreak import Break, PageBreak
+from openpyxl.worksheet.pagebreak import Break, PageBreak, RowBreak, ColBreak
 from openpyxl.chart import (
     LineChart,
     BarChart,
@@ -34,7 +34,7 @@ dataList = [
 ]
 with open("{}/supplier.json".format(os.path.dirname(__file__)), encoding='utf-8') as f:
     data = json.load(f)
-    [data.extend(data) for x in range(5)]
+    # [data.extend(data) for x in range(5)]
     for item in data:
         dataList[0].append(item["name"]) # 车供应商
         dataList[1].append(item["amount"]) # 结算金额
@@ -43,21 +43,31 @@ with open("{}/supplier.json".format(os.path.dirname(__file__)), encoding='utf-8'
         dataList[4].append(item["kPrice"]) # 单公里价格
         dataList[5].append(item["price"]) # 均单价
     # print("json源数据", data)
-    print(dataList)
+    # print(dataList)
 f.close()
 
 # 总数量
 total = len(dataList[0])
 multiple = math.ceil(total/5)
-print(total)
-print(math.ceil(total/5))
+# print(total)
+# print(math.ceil(total/5))
 
 for row in dataList:
     ws.append(row)
 
 # 第一个表: 结算金额
 c1 = BarChart()
-# c1.width = multiple*15
+
+
+# TODO
+print(ws.row_breaks)
+ws.row_breaks.append(Break(id=2))
+# ws.col_breaks.append(Break(count=2, id=2))
+print(ws.row_breaks)
+# TODO
+
+
+c1.width = multiple*15
 cats = Reference(ws, min_col=2, max_col=total, min_row=1, max_row=1)
 v1 = Reference(ws, min_col=1, min_row=2, max_col=total)
 c1.add_data(v1, titles_from_data=True, from_rows=True)
@@ -89,7 +99,7 @@ c3.y_axis.title = "用车次数"
 c3.y_axis.crosses = "max"
 c1 += c3
 
-ws.add_chart(c1, "A8")
+ws.add_chart(c1, "H10")
 print("生成成功")
 
 wb.save("供应商服务分析.xlsx")

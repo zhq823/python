@@ -1,6 +1,8 @@
 import os
 import json
+import openpyxl
 from openpyxl import Workbook, load_workbook
+from openpyxl.worksheet.pagebreak import Break, PageBreak, RowBreak, ColBreak
 from openpyxl.chart import (
     LineChart,
     BarChart,
@@ -34,18 +36,21 @@ with open("{}/carAmount.json".format(os.path.dirname(__file__)), encoding='utf-8
         dataList[1].append(item["amount"])
         dataList[2].append(item["qty"])
     # print("json源数据", data)
-    print(dataList)
+    # print(dataList)
 f.close()
 
 # 总数量
 total = len(dataList[0])
-print(total)
+# print(total)
 
 for row in dataList:
     ws.append(row)
 
 # 第一个柱状图
 c1 = BarChart()
+
+
+
 cats = Reference(ws, min_col=2, max_col=total, min_row=1, max_row=1)
 v1 = Reference(ws, min_col=1, min_row=2, max_col=total)
 c1.add_data(v1, titles_from_data=True, from_rows=True)
@@ -70,6 +75,16 @@ c2.y_axis.title = "用车次数"
 c2.y_axis.crosses = "max"
 c1 += c2
 
-ws.add_chart(c1, "D4")
+ws.add_chart(c1, "D8")
+
+# TODO
+
+try:
+    ws.page_breaks.append(RowBreak(Break(id=5)))
+except:
+    ws.row_breaks.append(RowBreak(Break(id=5)))
+
+# TODO
 
 wb.save("销售用车次数、花费.xlsx")
+print("文件生成成功")
