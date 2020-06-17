@@ -60,9 +60,10 @@ c1 = BarChart()
 
 
 # TODO
+# 分页符适用于打印，并不是展示用的
 print(ws.row_breaks)
 ws.row_breaks.append(Break(id=2))
-# ws.col_breaks.append(Break(count=2, id=2))
+ws.col_breaks.append(Break(id=2))
 print(ws.row_breaks)
 # TODO
 

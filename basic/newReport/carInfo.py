@@ -80,9 +80,22 @@ ws.add_chart(c1, "D8")
 # TODO
 
 try:
-    ws.page_breaks.append(RowBreak(Break(id=5)))
+    ws.page_breaks.append(RowBreak(Break(id=2)))
 except:
-    ws.row_breaks.append(RowBreak(Break(id=5)))
+    ws.row_breaks.append(RowBreak(Break(id=2)))
+
+# 排序
+ws.auto_filter.ref = "A1:P3"
+# ws.auto_filter.add_filter_column(0, ["Kiwi", "Apple", "Mango"])
+ws.auto_filter.add_sort_condition("B2:B3")
+
+#设置密码
+wb.security.workbookPassword = '825'
+wb.security.lockStructure = True
+
+wb.security.revisionsPassword = '825'
+ws.protection.password = '825'
+
 
 # TODO
 
