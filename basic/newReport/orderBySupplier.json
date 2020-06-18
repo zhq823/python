@@ -1,0 +1,33 @@
+[{
+    "supplierName": "滴滴",
+    "platform": "平台",
+    "qty": 598,
+    "settleAmount": 43924.85,
+    "kilometre": 7166.70,
+    "kPrice": 6.13,
+    "price": 73.45
+},{
+    "supplierName": "神州",
+    "platform": "平台",
+    "qty": 363,
+    "settleAmount": 26405.64,
+    "kilometre": 4089.24,
+    "kPrice": 6.46,
+    "price": 72.74
+},{
+    "supplierName": "易来回车队",
+    "platform": "线下",
+    "qty": 32,
+    "settleAmount": 11762.24,
+    "kilometre": 1143.00,
+    "kPrice": 10.29,
+    "price": 367.57
+},{
+    "supplierName": "一嗨租车",
+    "platform": "平台",
+    "qty": 5,
+    "settleAmount": 584.66,
+    "kilometre": 48,
+    "kPrice": 12.18,
+    "price": 116.93
+}]
