@@ -3,6 +3,8 @@ import json
 import math
 from openpyxl import Workbook, load_workbook
 from openpyxl.worksheet.pagebreak import Break, RowBreak, ColBreak
+from openpyxl.styles import colors
+from openpyxl.styles import Font, Color, PatternFill, Border, Side
 from openpyxl.chart import (
     LineChart,
     BarChart,
@@ -113,6 +115,33 @@ class ExportExcel:
         multiple = total/5 # 标准类别长度是5，所以total/5是标准宽度的倍数
         for row in dataList:
             ws.append(row) # 遍历list，向sheet添加数据
+        # 合计
+        lastRow = [None for x in dataList[0]]
+        lastRow[0] = '总计'
+        ws.append(lastRow)
+        ws['C{}'.format(total+1)] = "=SUM(C2:C{})".format(total)
+        ws['D{}'.format(total+1)] = "=SUM(D2:D{})".format(total)
+        ws['E{}'.format(total+1)] = "=SUM(E2:E{})".format(total)
+        ws['F{}'.format(total+1)] = "=SUM(F2:F{})".format(total)
+        ws['G{}'.format(total+1)] = "=SUM(G2:G{})".format(total)
+        # 合计样式
+        lastRows = ws['A{}'.format(total+1):'G{}'.format(total+1)]
+        def addFont(cell):
+            # https://openpyxl.readthedocs.io/en/stable/styles.html
+            # 字体样式
+            cell.font = Font(color=colors.RED, italic=True, bold=True)
+            # 填充样式
+            cell.fill = PatternFill("solid", fgColor=colors.YELLOW)
+        def addBorder(cell):
+            # 边框样式
+            border = Border(left=Side(border_style="thin",color="000000"),
+                            right=Side(border_style="thin",color="000000"),
+                            top=Side(border_style="thin",color="000000"),
+                            bottom=Side(border_style="thin",color="000000"))
+            cell.border = border
+        [[addFont(cell) for cell in row]for row in lastRows]
+        [[addBorder(cell) for cell in row] for row in ws['A1':'G{}'.format(total+1)]]
+
 
         # 结算金额
         c1 = BarChart()
