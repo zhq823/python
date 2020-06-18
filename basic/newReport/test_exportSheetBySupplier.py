@@ -14,7 +14,7 @@ with open("{}/orderBySupplier.json".format(os.path.dirname(__file__)), encoding=
     dataList = [
         ["供应商名称", "供应商性质", "服务次数", "结算金额", "服务公里数", "单公里价格", "均单价"]
     ]
-    dataList.extend([[item['supplierName'], item['platform'], item['qty'], item['settleAmount'], item['kilometre'], item['kPrice'], item['price']]for item in data])
+    dataList.extend([[item['supplierName'], item['platform'], item['qty'], item['settleAmount'], item['kilometre'], item['kPrice'], item['price']] for item in data])
     print(dataList)
     instance.exportSheetBySupplier(dataList=dataList)
 f.close()
