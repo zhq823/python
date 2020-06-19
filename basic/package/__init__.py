@@ -17,6 +17,7 @@ if __name__ == "__main__":
     # test
     print(sys.path)
     
-    print("自身运行")
+    # print("自身运行")
 else:
-    print("被调用")
+    pass
+    # print("被调用")

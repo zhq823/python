@@ -1,14 +1,15 @@
 import pymysql
 class SQLEditor:
 
-    def __init__(self, host="47.101.30.46", port=4006, user="smartms", passwd="1", db="test_zhq", charset="utf8"):
+    def __init__(self, host="47.101.30.46", port=4006, user="smartms", passwd="1", charset="utf8"):
         self.host = host
         self.port = port
         self.user = user
         self.passwd = passwd
-        self.db = db
         self.charset = charset
         self.__ConnectDB()
+    def test():
+        print(666)
 
     # 查询列表，输出字典
     def Query(self, sql):
@@ -40,7 +41,7 @@ class SQLEditor:
 
     # 连接数据库
     def __ConnectDB(self):
-        self.db = pymysql.connect(host=self.host, port=self.port, user=self.user, passwd=self.passwd, db=self.db, charset=self.charset)
+        self.db = pymysql.connect(host=self.host, port=self.port, user=self.user, passwd=self.passwd, charset=self.charset)
         self.cursor = self.db.cursor()
 
     # 关闭数据库
