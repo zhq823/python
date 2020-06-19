@@ -52,8 +52,8 @@ class ExportExcel:
         # x轴类别category，min_col=1,max_col=1 == 取自第一列（这种情况max_col可以省略不写）；min_row=2,max_row=6 意思是从前固定好的第一列，从第2行到第6行取数据作为category
         cats = Reference(ws, min_col=1, max_col=1, min_row=2, max_row=total)
         # 同理第一个图表取自第三列，第2行到第6行的数据作为该图表的数据
-        v1 = Reference(ws, min_col=4, min_row=2, max_row=total)
-        c1.add_data(v1, titles_from_data=False, from_rows=False)
+        v1 = Reference(ws, min_col=4, min_row=1, max_row=total)
+        c1.add_data(v1, titles_from_data=True)
         c1.set_categories(cats)
         c1.y_axis.axId = 100
         c1.x_axis.title = '会议编号'
@@ -66,8 +66,9 @@ class ExportExcel:
 
         # 订单量
         c2 = LineChart()
-        v2 = Reference(ws, min_col=2, min_row=2, max_row=total)
-        c2.add_data(v2, titles_from_data=False, from_rows=False) #
+        v2 = Reference(ws, min_col=2, min_row=1, max_row=total)
+        c2.add_data(v2, titles_from_data=True) #
+        c2.set_categories(cats)
         c2.y_axis.axId = 200 # 可能多个公用一个x轴的y轴，所以为了区别不同的y轴，需要设置id，当然你也可以将不同的y轴的id设置一样，那么它们将公用一个y轴
         c2.y_axis.title = "订单量" # 该轴线的title
         c2.y_axis.crosses = "max" # 设置为max，那么该条轴线将位于系列右侧，默认左侧
@@ -76,8 +77,9 @@ class ExportExcel:
 
         # 公里数
         c3 = LineChart()
-        v3 = Reference(ws, min_col=3, min_row=2, max_row=total)
-        c3.add_data(v3, titles_from_data=False, from_rows=False) #
+        v3 = Reference(ws, min_col=3, min_row=1, max_row=total)
+        c3.add_data(v3, titles_from_data=True) #
+        c3.set_categories(cats)
         c3.y_axis.axId = 100 # 可能多个公用一个x轴的y轴，所以为了区别不同的y轴，需要设置id，当然你也可以将不同的y轴的id设置一样，那么它们将公用一个y轴
         c3.y_axis.title = "公里数" # 该轴线的title
         # c3.y_axis.crosses = "max" # 设置为max，那么该条轴线将位于系列右侧，默认左侧
@@ -147,8 +149,8 @@ class ExportExcel:
         c1 = BarChart()
         # c1.width = multiple*10
         cats = Reference(ws, min_col=1, max_col=1, min_row=2, max_row=total)
-        v1 = Reference(ws, min_col=4, min_row=2, max_row=total)
-        c1.add_data(v1, titles_from_data=False, from_rows=False)
+        v1 = Reference(ws, min_col=4, min_row=1, max_row=total)
+        c1.add_data(v1, titles_from_data=True)
         c1.set_categories(cats)
         c1.y_axis.axId = 100
         c1.x_axis.title = '供应商名称'
@@ -161,8 +163,9 @@ class ExportExcel:
 
         # 服务次数
         c2 = LineChart()
-        v2 = Reference(ws, min_col=3, min_row=2, max_row=total)
-        c2.add_data(v2, titles_from_data=False, from_rows=False) #
+        v2 = Reference(ws, min_col=3, min_row=1, max_row=total)
+        c2.add_data(v2, titles_from_data=True) #
+        c2.set_categories(cats)
         c2.y_axis.axId = 200 # 可能多个公用一个x轴的y轴，所以为了区别不同的y轴，需要设置id，当然你也可以将不同的y轴的id设置一样，那么它们将公用一个y轴
         c2.y_axis.title = "服务次数" # 该轴线的title
         c2.y_axis.crosses = "max" # 设置为max，那么该条轴线将位于系列右侧，默认左侧
@@ -171,8 +174,9 @@ class ExportExcel:
 
         # 服务公里数
         c3 = LineChart()
-        v3 = Reference(ws, min_col=5, min_row=2, max_row=total)
-        c3.add_data(v3, titles_from_data=False, from_rows=False) #
+        v3 = Reference(ws, min_col=5, min_row=1, max_row=total)
+        c3.add_data(v3, titles_from_data=True) #
+        c3.set_categories(cats)
         c3.y_axis.axId = 100 # 可能多个公用一个x轴的y轴，所以为了区别不同的y轴，需要设置id，当然你也可以将不同的y轴的id设置一样，那么它们将公用一个y轴
         c3.y_axis.title = "服务公里数" # 该轴线的title
         # c3.y_axis.crosses = "max" # 设置为max，那么该条轴线将位于系列右侧，默认左侧
@@ -184,10 +188,10 @@ class ExportExcel:
         # 单公里价格
         c4 = BarChart()
         # c4.width = multiple*10
-        cats = Reference(ws, min_col=1, max_col=1, min_row=2, max_row=total)
-        v4 = Reference(ws, min_col=6, min_row=2, max_row=total)
-        c4.add_data(v4, titles_from_data=False, from_rows=False)
-        c4.set_categories(cats)
+        cats4 = Reference(ws, min_col=1, max_col=1, min_row=2, max_row=total)
+        v4 = Reference(ws, min_col=6, min_row=1, max_row=total)
+        c4.add_data(v4, titles_from_data=True)
+        c4.set_categories(cats4)
         c4.y_axis.axId = 100
         c4.x_axis.title = '供应商名称'
         c4.y_axis.title = '单公里价格'
@@ -199,8 +203,9 @@ class ExportExcel:
         # 均单价
         c5 = LineChart()
         # c5.width = multiple*10
-        v5 = Reference(ws, min_col=7, min_row=2, max_row=total)
-        c5.add_data(v5, titles_from_data=False, from_rows=False)
+        v5 = Reference(ws, min_col=7, min_row=1, max_row=total)
+        c5.add_data(v5, titles_from_data=True)
+        c5.set_categories(cats4)
         c5.y_axis.axId = 300
         c5.y_axis.title = "均单价"
         c5.y_axis.crosses = "max"
@@ -227,13 +232,13 @@ class ExportExcel:
         # 记录当前工作簿有多少的sheet
         self.sheetnames = []
         try:
-            # 尝试读取本地文件《供应商服务分析.xlsx》
-            wb = load_workbook(filename="供应商服务分析.xlsx")
+            # 尝试读取本地文件《销售用车次数、花费.xlsx》
+            wb = load_workbook(filename="销售用车次数、花费.xlsx")
             # 每次运行给新sheet添加索引《sheet{index}》
             sheetnames = wb.sheetnames
             ws = wb.create_sheet("sheet{}".format(len(sheetnames)))
         except:
-            # 读取本地文件《供应商服务分析.xlsx》失败，就新建一个工作簿
+            # 读取本地文件《销售用车次数、花费.xlsx》失败，就新建一个工作簿
             wb = Workbook()
             sheetnames = []
             ws = wb.active
@@ -250,21 +255,22 @@ class ExportExcel:
         # x轴类别category，min_col=1,max_col=1 == 取自第一列（这种情况max_col可以省略不写）；min_row=2,max_row=6 意思是从前固定好的第一列，从第2行到第6行取数据作为category
         cats = Reference(ws, min_col=1, max_col=1, min_row=2, max_row=total)
         # 同理第一个图表取自第三列，第2行到第6行的数据作为该图表的数据
-        v1 = Reference(ws, min_col=3, min_row=2, max_row=total)
-        c1.add_data(v1, titles_from_data=False, from_rows=False)
+        v1 = Reference(ws, min_col=3, min_row=1, max_row=total)
+        c1.add_data(v1, titles_from_data=True)
         c1.set_categories(cats)
         c1.x_axis.title = '叫车人姓名'
         c1.y_axis.title = '用车花费'
         c1.y_axis.majorGridlines = None
-        c1.title = '供应商服务分析'
+        c1.title = '销售用车次数、花费'
         # 自定义系列
         # c1.series = [Series(v1, title="用车花费")]
 
 
         # 使用次数
         c2 = LineChart()
-        v2 = Reference(ws, min_col=2, min_row=2, max_row=total)
-        c2.add_data(v2, titles_from_data=False, from_rows=False) #
+        v2 = Reference(ws, min_col=2, min_row=1, max_row=total)
+        c2.add_data(v2, titles_from_data=True) #
+        c2.set_categories(cats)
         c2.y_axis.axId = 200 # 可能多个公用一个x轴的y轴，所以为了区别不同的y轴，需要设置id，当然你也可以将不同的y轴的id设置一样，那么它们将公用一个y轴
         c2.y_axis.title = "使用次数" # 该轴线的title
         c2.y_axis.crosses = "max" # 设置为max，那么该条轴线将位于系列右侧，默认左侧
@@ -279,6 +285,6 @@ class ExportExcel:
         ws.auto_filter.add_sort_condition("B2:B6")
 
 
-        wb.save("供应商服务分析.xlsx")
+        wb.save("销售用车次数、花费.xlsx")
         wb.close()
         print("文件生成成功")

@@ -8,8 +8,6 @@ class SQLEditor:
         self.passwd = passwd
         self.charset = charset
         self.__ConnectDB()
-    def test():
-        print(666)
 
     # 查询列表，输出字典
     def Query(self, sql):
